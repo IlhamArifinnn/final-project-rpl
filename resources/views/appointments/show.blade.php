@@ -47,7 +47,7 @@
                     <p class="text-gray-700">{{ $appointment->status }}</p>
                 </div>
 
-                <div class="flex justify-end space-x-2">
+                <div class="flex justify-start space-x-2">
                     <a href="{{ route('appointments.index') }}"
                         class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Kembali</a>
                     <a href="{{ route('appointments.edit', $appointment->id) }}"

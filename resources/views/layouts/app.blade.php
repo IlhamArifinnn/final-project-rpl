@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="{{ asset('assets/landing-page/img/logo1.png') }}" rel="icon">
+    <link href="{{ asset('assets/landing-page/img/logo1.png') }}" rel="apple-touch-icon">
+
+    <title>Sistem Informasi Pencatat Kesehatan Anak</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
