@@ -37,7 +37,7 @@
                         </div>
                     @endif
 
-                    <table class="table-auto w-full mt-4 border-collapse border border-gray-200">
+                    <table class="table-auto w-full">
                         <thead>
                             <tr class="text-left bg-gray-100">
                                 <th class="px-4 py-2 border border-gray-200">No.</th>
@@ -89,7 +89,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center border px-4 py-2">
+                                    <td colspan="7" class="text-center py-4">
                                         Tidak ada data anak yang ditemukan.
                                     </td>
                                 </tr>

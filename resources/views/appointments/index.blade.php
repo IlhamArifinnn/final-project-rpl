@@ -38,13 +38,13 @@
                 <table class="table-auto w-full">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2">No.</th>
-                            <th class="px-4 py-2">Pasien</th>
-                            <th class="px-4 py-2">Dokter</th>
-                            <th class="px-4 py-2">Tanggal</th>
-                            <th class="px-4 py-2">Waktu</th>
-                            <th class="px-4 py-2">Status</th>
-                            <th class="px-4 py-2">Aksi</th>
+                            <th class="px-4 py-2 border border-gray-200">No.</th>
+                            <th class="px-4 py-2 border border-gray-200">Pasien</th>
+                            <th class="px-4 py-2 border border-gray-200">Dokter</th>
+                            <th class="px-4 py-2 border border-gray-200">Tanggal</th>
+                            <th class="px-4 py-2 border border-gray-200">Waktu</th>
+                            <th class="px-4 py-2 border border-gray-200">Status</th>
+                            <th class="px-4 py-2 border border-gray-200">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +84,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4">Tidak ada data appointment.</td>
+                                <td colspan="7" class="text-center py-4">Tidak ada data monitoring.</td>
                             </tr>
                         @endforelse
                     </tbody>

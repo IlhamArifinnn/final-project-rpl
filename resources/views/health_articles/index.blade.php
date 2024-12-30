@@ -26,73 +26,20 @@
 
                 <div class="flex justify-between mb-4">
                     <h3 class="text-lg font-medium">Daftar Artikel</h3>
-
-                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
+                    @if (Auth::user()->role === 'admin' || Auth::user()->role === 'doctor')
                         <a href="{{ route('health_articles.create') }}"
                             class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
                             <i class="fa-solid fa-plus"></i> Tambah
                         </a>
                     @endif
-
                 </div>
 
-                {{-- <table class="table-auto w-full">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-4 py-2">No.</th>
-                            <th class="px-4 py-2">Judul</th>
-                            <th class="px-4 py-2">Penulis</th>
-                            <th class="px-4 py-2">Konten</th>
-                            <th class="px-4 py-2">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($articles as $article)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2">{{ $article->title }}</td>
-                                <td class="border px-4 py-2">{{ $article->author }}</td>
-                                <td class="border px-4 py-2">{{ $article->content }}</td>
-                                <td class="border px-4 py-2 flex space-x-2">
-
-                                    <a href="{{ route('health_articles.show', $article->id) }}"
-                                        class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-
-                                    <a href="{{ route('health_articles.edit', $article->id) }}"
-                                        class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </a>
-
-                                    <form action="{{ route('health_articles.destroy', $article->id) }}" method="POST"
-                                        onsubmit="return confirm('Yakin ingin menghapus artikel ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center py-4">Tidak ada artikel.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table> --}}
-
-                @foreach ($articles as $article)
+                @forelse ($articles as $article)
                     <article class="py-8 max-w-screen-md border-b border-gray-300">
-                        {{-- <a href="/posts/{{ $post['slug'] }}" class="hover:underline"> --}}
                         <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $article->title }}</h2>
-                        </a>
                         <div class="text-base text-gray-500">
                             <a href="#">{{ $article->author }}</a> | {{ $article->created_at->format('j F Y') }}
                         </div>
-                        {{-- <p class="my-4 font-light">{{ Str::limit($article->content, 140) }}</p> --}}
                         <p class="my-4 font-light">{{ $article->content }}</p>
 
                         <div class="flex gap-3">
@@ -100,13 +47,11 @@
                                 class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-
-                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
+                            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'doctor')
                                 <a href="{{ route('health_articles.edit', $article->id) }}"
                                     class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
-
                                 <form action="{{ route('health_articles.destroy', $article->id) }}" method="POST"
                                     onsubmit="return confirm('Yakin ingin menghapus artikel ini?');">
                                     @csrf
@@ -119,8 +64,9 @@
                             @endif
                         </div>
                     </article>
-                @endforeach
-
+                @empty
+                    <p class="text-center py-6 text-gray-700">Belum ada artikel yang tersedia.</p>
+                @endforelse
             </div>
         </div>
     </div>

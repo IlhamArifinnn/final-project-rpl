@@ -37,14 +37,14 @@
                 <table class="table-auto w-full">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2">No.</th>
-                            <th class="px-4 py-2">Nama</th>
-                            <th class="px-4 py-2">Email</th>
-                            <th class="px-4 py-2">Telepon</th>
-                            <th class="px-4 py-2">Spesialisasi</th>
-                            <th class="px-4 py-2">Verifikasi</th>
+                            <th class="px-4 py-2 border border-gray-200">No.</th>
+                            <th class="px-4 py-2 border border-gray-200">Nama</th>
+                            <th class="px-4 py-2 border border-gray-200">Email</th>
+                            <th class="px-4 py-2 border border-gray-200">Telepon</th>
+                            <th class="px-4 py-2 border border-gray-200">Spesialisasi</th>
+                            <th class="px-4 py-2 border border-gray-200">Verifikasi</th>
                             @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
-                                <th class="px-4 py-2">Aksi</th>
+                                <th class="px-4 py-2 border border-gray-200">Aksi</th>
                             @endif
                         </tr>
                     </thead>
