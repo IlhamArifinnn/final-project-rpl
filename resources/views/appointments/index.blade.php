@@ -35,60 +35,66 @@
 
                 </div>
 
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-4 py-2 border border-gray-200">No.</th>
-                            <th class="px-4 py-2 border border-gray-200">Pasien</th>
-                            <th class="px-4 py-2 border border-gray-200">Dokter</th>
-                            <th class="px-4 py-2 border border-gray-200">Tanggal</th>
-                            <th class="px-4 py-2 border border-gray-200">Waktu</th>
-                            <th class="px-4 py-2 border border-gray-200">Status</th>
-                            <th class="px-4 py-2 border border-gray-200">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($appointments as $appointment)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2">{{ $appointment->user->name }}</td>
-                                <td class="border px-4 py-2">{{ $appointment->doctor->name }}</td>
-                                <td class="border px-4 py-2">{{ $appointment->date }}</td>
-                                <td class="border px-4 py-2">{{ $appointment->time }}</td>
-                                <td class="border px-4 py-2 ">{{ $appointment->status }}</td>
-                                <td class="border px-4 py-2 flex space-x-2">
-
-                                    {{-- tombol show --}}
-                                    <a href="{{ route('appointments.show', $appointment->id) }}"
-                                        class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded ">
-                                        <i class="fa fa-eye " aria-hidden="true"></i>
-                                    </a>
-
-                                    {{-- tombol edit --}}
-                                    <a href="{{ route('appointments.edit', $appointment->id) }}"
-                                        class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </a>
-
-                                    {{-- tombol delete --}}
-                                    <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST"
-                                        onsubmit="return confirm('Yakin ingin menghapus appointment ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-4 py-2 border border-gray-200">No.</th>
+                                <th class="px-4 py-2 border border-gray-200">Pasien</th>
+                                <th class="px-4 py-2 border border-gray-200">Dokter</th>
+                                <th class="px-4 py-2 border border-gray-200">Tanggal</th>
+                                <th class="px-4 py-2 border border-gray-200">Waktu</th>
+                                <th class="px-4 py-2 border border-gray-200">Status</th>
+                                <th class="px-4 py-2 border border-gray-200">Aksi</th>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center py-4">Tidak ada data monitoring.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($appointments as $appointment)
+                                <tr>
+                                    <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                                    <td class="border px-4 py-2">{{ $appointment->user->name }}</td>
+                                    <td class="border px-4 py-2">{{ $appointment->doctor->name }}</td>
+                                    <td class="border px-4 py-2">{{ $appointment->date }}</td>
+                                    <td class="border px-4 py-2">{{ $appointment->time }}</td>
+                                    <td class="border px-4 py-2 ">{{ $appointment->status }}</td>
+                                    <td class="border px-4 py-2">
+
+                                        <div class="flex gap-3">
+
+                                            {{-- tombol show --}}
+                                            <a href="{{ route('appointments.show', $appointment->id) }}"
+                                                class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded ">
+                                                <i class="fa fa-eye " aria-hidden="true"></i>
+                                            </a>
+
+                                            {{-- tombol edit --}}
+                                            <a href="{{ route('appointments.edit', $appointment->id) }}"
+                                                class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+
+                                            {{-- tombol delete --}}
+                                            <form action="{{ route('appointments.destroy', $appointment->id) }}"
+                                                method="POST"
+                                                onsubmit="return confirm('Yakin ingin menghapus appointment ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center py-4">Tidak ada data monitoring.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

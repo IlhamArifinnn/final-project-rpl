@@ -96,6 +96,23 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('child_data.index')" :active="request()->routeIs('child_data.*')">
+                {{ __('Data Anak') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('doctors.index')" :active="request()->routeIs('doctors.*')">
+                {{ __('Data Dokter') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('appointments.index')" :active="request()->routeIs('appointments.*')">
+                {{ __('Data Monitoring') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('health_articles.index')" :active="request()->routeIs('health_articles.*')">
+                {{ __('Artikel Kesehatan') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -34,61 +34,67 @@
                     @endif
                 </div>
 
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-4 py-2 border border-gray-200">No.</th>
-                            <th class="px-4 py-2 border border-gray-200">Nama</th>
-                            <th class="px-4 py-2 border border-gray-200">Email</th>
-                            <th class="px-4 py-2 border border-gray-200">Telepon</th>
-                            <th class="px-4 py-2 border border-gray-200">Spesialisasi</th>
-                            <th class="px-4 py-2 border border-gray-200">Verifikasi</th>
-                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
-                                <th class="px-4 py-2 border border-gray-200">Aksi</th>
-                            @endif
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($doctors as $doctor)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2">{{ $doctor->name }}</td>
-                                <td class="border px-4 py-2">{{ $doctor->email }}</td>
-                                <td class="border px-4 py-2">{{ $doctor->phone }}</td>
-                                <td class="border px-4 py-2">{{ $doctor->specialization }}</td>
-                                <td class="border px-4 py-2">{{ $doctor->verified ? 'Ya' : 'Tidak' }}</td>
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-4 py-2 border border-gray-200">No.</th>
+                                <th class="px-4 py-2 border border-gray-200">Nama</th>
+                                <th class="px-4 py-2 border border-gray-200">Email</th>
+                                <th class="px-4 py-2 border border-gray-200">Telepon</th>
+                                <th class="px-4 py-2 border border-gray-200">Spesialisasi</th>
+                                <th class="px-4 py-2 border border-gray-200">Verifikasi</th>
                                 @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
-                                    <td class="border px-4 py-2 flex space-x-2">
-
-                                        <a href="{{ route('doctors.show', $doctor->id) }}"
-                                            class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </a>
-
-
-                                        <a href="{{ route('doctors.edit', $doctor->id) }}"
-                                            class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST"
-                                            onsubmit="return confirm('Yakin ingin menghapus dokter ini?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th class="px-4 py-2 border border-gray-200">Aksi</th>
                                 @endif
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center py-4">Tidak ada data dokter.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($doctors as $doctor)
+                                <tr>
+                                    <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                                    <td class="border px-4 py-2">{{ $doctor->name }}</td>
+                                    <td class="border px-4 py-2">{{ $doctor->email }}</td>
+                                    <td class="border px-4 py-2">{{ $doctor->phone }}</td>
+                                    <td class="border px-4 py-2">{{ $doctor->specialization }}</td>
+                                    <td class="border px-4 py-2">{{ $doctor->verified ? 'Ya' : 'Tidak' }}</td>
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
+                                        <td class="border px-4 py-2">
+
+                                            <div class="flex gap-3">
+
+                                                <a href="{{ route('doctors.show', $doctor->id) }}"
+                                                    class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+
+
+                                                <a href="{{ route('doctors.edit', $doctor->id) }}"
+                                                    class="text-white bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                </a>
+                                                <form action="{{ route('doctors.destroy', $doctor->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Yakin ingin menghapus dokter ini?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    @endif
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center py-4">Tidak ada data dokter.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
